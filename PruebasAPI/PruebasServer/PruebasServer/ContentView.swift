@@ -14,7 +14,11 @@ struct ContentView: View {
     @StateObject var preguntasPorExamenModel =  PreguntasPorExamenModel()
     
     
-    
+    init(){
+        preguntasPorExamenModel.loadPreguntasPorExamen(id: 1)
+        print(preguntasPorExamenModel.preguntasPorExamen[0].nombreExamen)
+        print(preguntasPorExamenModel.preguntasPorExamen[0].siglasExamen)
+    }
     
     var body: some View {
         VStack{
@@ -26,23 +30,24 @@ struct ContentView: View {
                 }
             }
             Text("Prueba2")
-            getPreguntasPorExamen(id: 1)
+            
+            
             List{
+                
                 ForEach(preguntasPorExamenModel.preguntasPorExamen) {
                     preguntasPorExamen in
+                    
                     Text(preguntasPorExamen.nombreExamen)
                     Text(preguntasPorExamen.siglasExamen)
 //                    Text(preguntasPorExamen.idPregunta)
 //                    Text(preguntasPorExamen.nombrePregunta)
                 }
+                
             }
         }
         
     }
     
-    func getPreguntasPorExamen(id: Int){
-        preguntasPorExamenModel.loadPreguntasPorExamen(id: id)
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -30,7 +30,6 @@ class PreguntasPorExamenModel:ObservableObject{
             data in
             
             let json = try! JSON(data: data.data!)
-            //print(json)
             
             var auxPreguntasPorExamen: PreguntasPorExamen
             for preguntasPorExamen in json {
@@ -51,6 +50,7 @@ class PreguntasPorExamenModel:ObservableObject{
                     idPregunta: idPreguntaInt,
                     nombrePregunta: preguntaString)
                 self.preguntasPorExamen.append(auxPreguntasPorExamen)
+            
             }
             
         }
